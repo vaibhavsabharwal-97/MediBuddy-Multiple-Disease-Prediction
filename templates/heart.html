@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+	<title>MediBuddy | Heart Disease Prediction</title>
+</head>
+<style>
+	button
+{
+	border-style:none;
+}
+
+h1, h2, h3, h4, h5{
+    text-align: center;
+
+}
+
+form {
+	margin-top: 3%;
+	margin-left: 29%;
+	margin-right: 21%;
+
+}
+
+form fieldset{
+	padding: 30px;
+	border-width: 20px;
+	border-style: groove;
+    border-color: #5a5a5a;
+	background-color: #fff;
+}
+
+fieldset h1 {
+	color: #5a5a5a;
+	padding-bottom: 20px;
+	margin-left: 35px;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 28px;
+	text-align: center;
+}
+
+fieldset label {
+	margin-left: 20px;
+	margin-right: 40px;
+	padding: 23px;
+	font-size: 20px;
+	display: inline-block;
+    width  : 240px;
+}
+fieldset input{
+	padding:8px;
+	color: #938c8c
+}
+fieldset input:focus{
+	color: #000;
+}
+fieldset button
+{
+	margin-left: 60px;
+	color: #fff;
+	background-color: #5a5a5a;
+	border-radius: 3px;
+	padding: 13px 39px;
+	text-align: center;
+	letter-spacing: 0.9px;
+	text-decoration: none;
+	margin-right: 15px;
+	line-height: 26px;
+	font-size: 16px;
+	box-shadow: 0px 1px 3px 0px #5a5a5a;
+	right: 0px;
+	margin-top: 15px;
+}
+
+
+.submit{
+	margin-left: 60px;
+	color: #fff;
+	background-color: #5a5a5a;
+	border-radius: 3px;
+	padding: 13px 39px;
+	text-align: center;
+	letter-spacing: 0.9px;
+	text-decoration: none;
+	margin-right: 10px;
+	line-height: 26px;
+	font-size: 16px;
+	box-shadow: 0px 1px 3px 0px #5a5a5a;
+	right: 100px;
+	margin-top: 15px;
+}
+
+#link_to_edit{
+    padding-left: 45px;
+}
+
+.fieldset{
+	margin-top: 3%;
+	margin-left: 0%;
+	margin-right: 0%;
+	padding: 30px;
+	border-width: 25px;
+	border-style: ridge;
+	border-color: #257a7a;
+	box-shadow: 6px 13px 13px 0px black;
+	background-color: #ebfffa;
+}
+</style>
+<body>
+
+	<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="#"><b>MediBuddy</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Get Started</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/disindex">Disease Index</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cancer">Breast Cancer</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/heart">Heart Disease</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/liver">Liver Disease</a>
+                    </li>
+                    <li class="nav-item">
+		                <a class="nav-link" href="/brain">Brain Tumor</a>
+		            </li>
+                    <li class="nav-item">
+		                <a class="nav-link" href="/pneumonia">Pneumonia</a>
+		            </li>
+                    </ul>
+                </div>
+            </nav>
+    </header><br/><br/>
+    <h1 style="text-align:center;">Heart Disease Prediction</h1>
+<h5 style="text-align:center;">Please enter the patient details</h5>
+
+<form action="{{ url_for('predictheart')}}" method="post" class="form-inline">
+    <fieldset>
+        <div class="tabcontent" id="new">
+
+            <div class="form-group">
+                <label for="age">Age in Years</label>
+                <input class="form-control" type="number" name="age" placeholder="eg. 34" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" name="gender" required="required">
+                    <option value="">Select Gender</option>
+                    <option value="2">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="systolic blood pressure">Systolic Blood Pressure</label>
+                <input class="form-control" type="number" name="systolic_blood_pressure" placeholder="eg. 120" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="diastolic blood pressure">Diastolic Blood Pressure</label>
+                <input class="form-control" type="number" name="diastolic_blood_pressure" placeholder="eg. 80" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="cholesterol level">Cholesterol Level</label>
+                <select class="form-control" name="cholesterol_level" required="required">
+                    <option value="">Select Cholesterol Level</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Above Normal</option>
+                    <option value="3">Well Above Normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="glucose level">Glucose Level</label>
+                <select class="form-control" name="glucose_level" required="required">
+                    <option value="">Select Glucose Level</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Above Normal</option>
+                    <option value="3">Well Above Normal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="smoke">Smoking Status</label>
+                <select class="form-control" name="smoke" required="required">
+                    <option value="">Select Smoking Status</option>
+                    <option value="0">Never Smoked</option>
+                    <option value="1">Current Smoker</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="alcohol intake">Alcohol Intake</label>
+                <select class="form-control" name="alcohol_intake" required="required">
+                    <option value="">Select Alcohol Intake</option>
+                    <option value="0">Never</option>
+                    <option value="1">Occasional/Frequent</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="active">Physical Activity</label>
+                <select class="form-control" name="active" required="required">
+                    <option value="">Select Physical Activity</option>
+                    <option value="1">Active</option>
+                    <option value="0">Not Active</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="height_meter">Height (m)</label>
+                <input class="form-control" type="number" step="0.01" name="height" placeholder="eg. 1.75" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="weight_kg">Weight (kg)</label>
+                <input class="form-control" type="number" name="weight" placeholder="eg. 70" required="required"/>
+            </div>
+            <div class="form-group">
+                <label for="body mass index">Body Mass Index</label>
+                <input class="form-control" type="number" step="0.01" name="body_mass_index" placeholder="eg. 25.6" required="required"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">Predict</button>
+
+        </div>
+    </fieldset>
+</form>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

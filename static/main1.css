@@ -1,0 +1,85 @@
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+  }
+
+  .main {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .upload-box {
+    border: 2px dashed #ccc;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .upload-box:hover {
+    background-color: #f4f4f4;
+  }
+
+  #image-preview {
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: 1rem;
+  }
+
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0.25rem;
+    cursor: pointer;
+  }
+
+  #image-display {
+    max-width: 100%;
+    max-height: 400px;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  #pred-result {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  #loader {
+    display: block;
+    margin: 1rem auto;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .hidden {
+    display: none;
+  }
+
